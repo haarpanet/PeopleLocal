@@ -8,16 +8,11 @@ public class Email {
         this.valeur = valeur;
     }
 
-    public Email(long id, String valeur) {
-        this.id = id;
-        this.valeur = valeur;
-    }
-
     public Email() {
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -25,7 +20,7 @@ public class Email {
         return valeur;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

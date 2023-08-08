@@ -6,7 +6,7 @@ import java.sql.*;
 
 public class ContactRepository {
     private final Connection connection;
-    public static final String INSERT_CONTACT = "INSERT INTO CONTACT (EMAIL_ID) VALUES (?)";
+    public static final String INSERT_CONTACT = "INSERT INTO CONTACT (EMAIL_ID, TELEPHONE_ID) VALUES (?,?)";
 
     public ContactRepository(Connection connection) {
         this.connection = connection;
@@ -15,7 +15,19 @@ public class ContactRepository {
     public Contact save(Contact contact) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CONTACT, Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setLong(1, contact.getEmail().getId());
+
+            if ( contact.getEmail() == null ) {
+                preparedStatement.setNull(1, Types.NULL);
+            } else {
+                preparedStatement.setLong(1, contact.getEmail().getId());
+            }
+
+            if ( contact.getTelephone() == null ) {
+                preparedStatement.setNull(2, Types.NULL);
+            } else {
+                preparedStatement.setLong(2, contact.getTelephone().getId());
+            }
+
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
 

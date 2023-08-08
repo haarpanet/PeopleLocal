@@ -2,11 +2,15 @@ package fr.haarpanet.model;
 
 public class Telephone {
 
-    private final String valeur;
+    private String valeur;
     private Long id;
 
     public Telephone(String valeur) {
         this.valeur = valeur;
+    }
+
+    public Telephone() {
+
     }
 
     public Long getId() {
@@ -19,5 +23,9 @@ public class Telephone {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public void setValeur(String valeur) {
+        this.valeur = valeur;
     }
 }
