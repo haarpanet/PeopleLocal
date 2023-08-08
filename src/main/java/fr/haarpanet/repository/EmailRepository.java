@@ -5,9 +5,10 @@ import fr.haarpanet.model.Email;
 import java.sql.*;
 
 public class EmailRepository {
-    private static final String FIND_BY_VALEUR = "SELECT * FROM EMAIL WHERE VALEUR LIKE CONCAT( '%', ? , '%')";
+
     private final Connection connection;
     public static final String INSERT_EMAIL = "INSERT INTO EMAIL (VALEUR) VALUES (?)";
+    private static final String FIND_BY_VALEUR = "SELECT * FROM EMAIL WHERE VALEUR LIKE CONCAT( '%', ? , '%')";
     public EmailRepository(Connection connection) {
         this.connection = connection;
     }

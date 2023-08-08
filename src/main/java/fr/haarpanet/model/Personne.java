@@ -2,8 +2,12 @@ package fr.haarpanet.model;
 
 public class Personne {
     private final Identite identite;
-    private final Contact contact;
+    private Contact contact;
     private Long id;
+
+    public Personne(Identite identite) {
+        this.identite = identite;
+    }
 
     public Identite getIdentite() {
         return identite;
